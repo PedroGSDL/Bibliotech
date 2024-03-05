@@ -146,7 +146,7 @@ try
 {
     Connection con = ConnectionProvider.getCon();
     Statement st = con.createStatement();
-    st.executeUpdate("insert into student values('"+name+"','"+studentID+"','"+courseName+"','"+semester+"')");
+    st.executeUpdate("insert into student values('"+studentID+"','"+name+"','"+courseName+"','"+semester+"')");
     JOptionPane.showMessageDialog(null,"Este Estudante foi adicionado com sucesso!");
     setVisible(false);
     new Student().setVisible(true);
