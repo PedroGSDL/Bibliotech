@@ -1,0 +1,53 @@
+Tela Retorno de Livro
+Create new JFrame Return Book
+4 labels:
+Id do Livro
+Id do Estudante
+Data de Empréstimo
+Data de Retorno
+4 Textbox;
+1 Botão (Procurar)
+1 Botão (Retornar)
+1 Botão (Fechar) - setVisible(false)
+
+Botão Pesquisa:
+Puxar as chamadas das bibliotecas e da classe
+Na Action:
+String bookId = jtextfield1.getText();
+String studentId = jtextfield2.getText();
+try
+{
+Connection con = ConnectionProvider.getCon();
+Statement st = con.createStatement();
+ResultSet rs = st.executeQuery ("select * from issue where bookId ='" +bookId+"' and studentId = '"+studentId+"'")
+}
+if((rs.next))
+{
+	jTextField3.setText(rs.getString(3));
+	jTextField4.setText(rs.getString(4));
+	jTextField1.getText.setEditable(false);
+	jTextField2.getText.setEditable(false);
+}
+else
+{
+	JOptionPane.showMessageDialog(null,"Este livro não foi emprestado para este estudante!");
+	setVisible(false);
+	new returnBook().setVisible(true);
+}
+}
+catch(Exception e)
+{
+JOptionPane.showMessageDialog(null,"Erro de Conexão com o Banco de Dados, tente novamente!");
+}
+
+Botão Retornar:
+String bookId = jTextFiedl1.getText();
+String studentId = jTextField.getText();
+try
+{
+Connection con = ConnectionProvider.getCon();
+Statement st = con.createStatement();
+st.executeQuery("update issue set returnBook = "Sim" where studentId = '"+studentId"'+ and bookId = '"bookId"'");
+
+}
+catch(Exception e)
